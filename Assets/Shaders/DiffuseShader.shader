@@ -1,6 +1,7 @@
 ﻿Shader "Benttoenail/DiffuseShader" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
+		_MainTex("Albedo (RGB)", 2D) = "white" {}
 		_Emission("Emission", Color) = (1, 1, 1, 1)
 		_Emit ("Emit", Range(0, 1)) = 0.0
 	}
@@ -33,7 +34,8 @@
 		UNITY_INSTANCING_CBUFFER_END
 
 		void surf (Input IN, inout SurfaceOutput o) {
-			o.Albedo = _Color.rgb;
+			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+			o.Albedo = c.rgb; 
 			o.Emission = _Emission.rgb * _Emit;
 
 		}
