@@ -2,29 +2,29 @@
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-		_Glossiness ("Smoothness", Range(0,1)) = 0.5
-		_Metallic ("Metallic", Range(0,1)) = 0.0
+		_ScrollYSpeed("Y Scroll Speed", Range(0,10)) = 2
+		_ScrollXSpeed("X Scroll Speed", Range(0,10)) = 2
 	}
 
-	SubShader {
-		Tags { "RenderType"="Opaque" }
-		LOD 200
-		
-		CGPROGRAM
-		// Physically based Standard lighting model, and enable shadows on all light types
-		#pragma surface surf Standard fullforwardshadows
+		SubShader{
+			Tags { "RenderType" = "Opaque" }
+			LOD 200
 
-		// Use shader model 3.0 target, to get nicer looking lighting
-		#pragma target 3.0
+			CGPROGRAM
+			// Physically based Standard lighting model, and enable shadows on all light types
+			#pragma surface surf Standard fullforwardshadows
 
-		sampler2D _MainTex;
+			// Use shader model 3.0 target, to get nicer looking lighting
+			#pragma target 3.0
+
+			fixed _ScrollYSpeed;
+			fixed _ScrollXSpeed;
+			sampler2D _MainTex;
 
 		struct Input {
-			float2 uv_Tex;
+			float2 uv_MainTex;
 		};
 
-		half _Glossiness;
-		half _Metallic;
 		fixed4 _Color;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -35,12 +35,17 @@
 		UNITY_INSTANCING_CBUFFER_END
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
+			fixed2 scrolledUV = IN.uv_MainTex;
+
+			fixed xScrollValue = _ScrollXSpeed * _Time;
+			fixed yScrollValue = _ScrollYSpeed * _Time;
+
+			scrolledUV += fixed2(xScrollValue, yScrollValue);
+
 			// Albedo comes from a texture tinted by color
-			fixed4 c = tex2D (_MainTex, IN.uv_Tex) * _Color;
+			fixed4 c = tex2D (_MainTex, scrolledUV) * _Color;
 			o.Albedo = c.rgb;
-			// Metallic and smoothness come from slider variables
-			o.Metallic = _Metallic;
-			o.Smoothness = _Glossiness;
+
 			o.Alpha = c.a;
 		}
 		ENDCG
