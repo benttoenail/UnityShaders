@@ -6,6 +6,8 @@
 		_Metallic("Metallic", Range(0,1)) = 0.0
 		//Normal Map Properties
 		_NormalTex("Normal Map", 2D) = "bump" {}
+		_xTile ("Tile X", Range(0, 10)) = 1.0
+		_yTile ("Tile Y", Range(0, 10)) = 1.0
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -26,12 +28,12 @@
 			float2 uv_NormalTex;
 		};
 
-
-		
-
 		half _Glossiness;
 		half _Metallic;
 		fixed4 _Color;
+
+		half _xTile;
+		half _yTile;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -41,12 +43,19 @@
 		UNITY_INSTANCING_CBUFFER_END
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
+
+			float2 uvNormal = float2(IN.uv_NormalTex.x * _xTile,
+									 IN.uv_NormalTex.y * _yTile);
+
+			float2 uvMainTex = float2(IN.uv_MainTex.x * _xTile, 
+									 IN.uv_MainTex.y * _yTile);
+
 			// Albedo comes from a texture tinted by color
-			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+			fixed4 c = tex2D (_MainTex, uvMainTex) * _Color;
 
 			//Get the normal data out of normal Map texture
 			//using the UnpackNormal Function
-			o.Normal = UnpackNormal(tex2D(_NormalTex, IN.uv_NormalTex));
+			o.Normal = UnpackNormal(tex2D(_NormalTex, uvNormal));
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;

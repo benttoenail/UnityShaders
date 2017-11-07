@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Shaders/DiffuseShader.shader">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets/Shaders/SurfaceShader.shader" Line="1" Column="1" />
-      <File FileName="Assets/Shaders/SurfaceShader2.shader" Line="1" Column="20" />
-      <File FileName="Assets/Shaders/DiffuseShader.shader" Line="35" Column="48" />
+      <File FileName="Assets/Shaders/SurfaceShader2.shader" Line="1" Column="1" />
+      <File FileName="Assets/Shaders/DiffuseShader.shader" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
