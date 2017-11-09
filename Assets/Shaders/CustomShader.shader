@@ -9,12 +9,13 @@
 		LOD 200
 		 
 		CGPROGRAM
-		#pragma surface surf Lambert fullforwardshadows
-		#pragma target 3.0
-
+		#pragma surface surf Lambert alpha:fade 
+		#pragma target 3.0		
+		
 		float4 _Color;
 		sampler2D _MainTex;
 		sampler2D _NormalMap;
+
 
 		struct Input {
 			float2 uv_MainTex;
@@ -23,14 +24,14 @@
 
 
 		void surf(Input IN, inout SurfaceOutput o){
-			fixed4 mainTex = tex2D(_MainTex, IN.uv_MainTex);
-
+			float4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 			o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap)); 
-			o.Albedo = mainTex * _Color.rgb; 
+			o.Albedo = c.rgb;
 		}
 
 		ENDCG
 		
 	}
 	Fallback "Diffuse"
+	
 }
