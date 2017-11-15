@@ -72,7 +72,8 @@ Shader "Benttoenail/TriplanerShader" {
 			half4 frag(v2f i) : SV_TARGET {
 
 				//Sample Normal Map
-				half3 normal = UnpackNormal(tex2D(_NormalMap, i.uv));
+				half3 bump = tex2D(_NormalMap, i.uv) * 2;
+
 
 				//abs of normal as texture weights
 				half3 blend = abs(i.objNormal);
