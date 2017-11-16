@@ -99,6 +99,7 @@
     <Compile Include="Assets\BOOK ASSETS\First edition\5084_10_Codes\5084_10_Codes\TestRenderImage.cs" />
     <Compile Include="Assets\BOOK ASSETS\First edition\5084_11_Codes\5084_11_Codes\NightVisionEffect.cs" />
     <Compile Include="Assets\BOOK ASSETS\First edition\5084_11_Codes\5084_11_Codes\OldFilmEffect.cs" />
+    <Compile Include="Assets\Scripts\BlackAndWhite.cs" />
     <Compile Include="Assets\Scripts\ShowNormals.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +184,10 @@
     <None Include="Assets\MAX-Shaders\Chapter-05-VertexFunctions\DisplacementShader.shader" />
     <None Include="Assets\MAX-Shaders\Chapter-06-FragShaders\CheckerBoardShader.shader" />
     <None Include="Assets\MAX-Shaders\Chapter-06-FragShaders\SimpleFragShader.shader" />
+    <None Include="Assets\MAX-Shaders\Chapter-06-FragShaders\StandardTriplanerShader.shader" />
     <None Include="Assets\MAX-Shaders\Chapter-06-FragShaders\TriplanerShader.shader" />
+    <None Include="Assets\MAX-Shaders\Chapter-08-ScreenEffects\ImageEffect.shader" />
+    <None Include="Assets\Shaders\NewUnlitShader.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
