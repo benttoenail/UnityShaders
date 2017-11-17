@@ -201,7 +201,9 @@
     <None Include="Assets\MAX-Shaders\Chapter-06-FragShaders\SimpleFragShader.shader" />
     <None Include="Assets\MAX-Shaders\Chapter-06-FragShaders\StandardTriplanerShader.shader" />
     <None Include="Assets\MAX-Shaders\Chapter-06-FragShaders\TriplanerShader.shader" />
+    <None Include="Assets\MAX-Shaders\Chapter-08-ScreenEffects\BSCImageEffect.shader" />
     <None Include="Assets\MAX-Shaders\Chapter-08-ScreenEffects\ImageEffect.shader" />
+    <None Include="Assets\MAX-Shaders\Chapter-08-ScreenEffects\ScreenDepthEffect.shader" />
     <None Include="Assets\Shaders\NewUnlitShader.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

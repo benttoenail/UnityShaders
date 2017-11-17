@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class BlackAndWhite : MonoBehaviour {
+public class ScreenEffects : MonoBehaviour {
 
     #region VARIABLES
     public Shader currentShader;
     public float grayScaleAmount = 1.0f;
+    public float depthPower = 1.0f;
     private Material currentMaterial;
     #endregion
 
@@ -47,7 +48,7 @@ public class BlackAndWhite : MonoBehaviour {
     {
         if(currentShader != null)
         {
-            material.SetFloat("_LuminosityAmount", grayScaleAmount);
+            material.SetFloat("_DepthPower", depthPower);
 
             //Copy the render texture to the destiniation texture
             Graphics.Blit(sourceTexture, destTexture, material);
@@ -62,7 +63,9 @@ public class BlackAndWhite : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        grayScaleAmount = Mathf.Clamp(grayScaleAmount, 0.0f, 1.0f);
+        //grayScaleAmount = Mathf.Clamp(grayScaleAmount, 0.0f, 1.0f);
+        Camera.main.depthTextureMode = DepthTextureMode.Depth;
+        depthPower = Mathf.Clamp(depthPower, 0, 5);
 	}
 
 
